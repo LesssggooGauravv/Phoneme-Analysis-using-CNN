@@ -1,0 +1,14 @@
+phoneme-analysis/
+│
+├── phonemes/
+    ├── affricates
+    ├── approximants
+    ├── diphthongs
+    ├── fricatives
+    ├── monophthongs
+    ├── nasals
+    └── plosives
+├── Phonemes.ipynb
+├── README.md
+├── requirements.txt
+├── structure.txt
