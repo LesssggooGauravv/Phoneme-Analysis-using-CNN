@@ -68,76 +68,6 @@ Each audio file is converted into a **3-channel time–frequency representation*
 - **Delta-Delta (ΔΔ)** – second-order temporal derivative
 
 Final input shape:
-# 🗣️ Phoneme Analysis using Convolutional Neural Networks (CNN)
-
-This project implements a **phoneme category classification system** using **pure Convolutional Neural Networks (CNNs)** and **mel-spectrogram–based audio features**.  
-It focuses on **robust audio preprocessing, deterministic augmentation, leakage-safe evaluation**, and **phonetic error analysis**.
-
-The project is designed to demonstrate **practical signal-processing knowledge** and **sound ML evaluation practices**, rather than chasing inflated accuracy numbers.
-
----
-
-## 📌 Problem Statement
-
-Phonemes are the smallest distinguishable units of sound in spoken language.  
-Many phonemes exhibit **high acoustic similarity**, overlapping formants, and subtle temporal differences, making automatic classification a challenging task.
-
-This project aims to:
-- Classify phonemes into **7 broad phoneme categories**
-- Analyze **confusion patterns between acoustically similar phonemes**
-- Evaluate the effect of **augmentation and feature engineering**
-- Build a **leakage-safe CNN pipeline** with realistic performance metrics
-
----
-
-## 🎙️ Phoneme Dataset (Self-Recorded)
-
-> **Important:**  
-> The phoneme dataset used in this project was **created entirely using my own voice recordings**.
-
-### Dataset Characteristics
-- **Source:** Self-recorded speech samples
-- **Speaker:** Single speaker (author)
-- **Format:** WAV files
-- **Sampling Rate:** 22,050 Hz
-- **Organization:** Phonemes grouped into linguistic categories
-
-Using a self-recorded dataset allows:
-- Full control over pronunciation and articulation
-- Clean phoneme isolation
-- Transparent discussion of dataset limitations
-- Ethical and licensing clarity
-
----
-
-## 🧠 Phoneme Categories
-
-The dataset is organized into **7 phoneme groups**:
-
-| Category | Description |
-|--------|-------------|
-| Plosives | p, t, k, b, d, g |
-| Nasals | m, n, ŋ |
-| Affricates | tʃ, dʒ |
-| Fricatives | f, v, θ, ð, s, z, ʃ, ʒ, h |
-| Approximants | w, l, r, j |
-| Diphthongs | Vowel glides |
-| Monophthongs | Pure vowel sounds |
-
-Each category contains multiple `.wav` files recorded separately.
-
----
-
-## 🎵 Feature Extraction
-
-Each audio file is converted into a **3-channel time–frequency representation**:
-
-### Features Used
-- **Mel-Spectrogram** (128 mel bands)
-- **Delta (Δ)** – first-order temporal derivative
-- **Delta-Delta (ΔΔ)** – second-order temporal derivative
-
-Final input shape:
 (128, Time, 3)
 
 These features allow the CNN to learn:
@@ -181,18 +111,31 @@ This pipeline prioritizes **stability, reproducibility, and correctness**.
 The classifier uses a **pure CNN architecture** (no RNNs, no attention):
 
 Input (128 × T × 3)
+
 ↓
+
 Conv2D (32 filters) + BatchNorm + ReLU + MaxPool
+
 ↓
+
 Conv2D (64 filters) + BatchNorm + ReLU + MaxPool
+
 ↓
+
 Conv2D (96 filters) + BatchNorm + ReLU
+
 ↓
+
 Global Average Pooling
+
 ↓
+
 Dense (64) + Dropout
+
 ↓
+
 Dense (7) + Softmax
+
 
 ### Design Rationale
 - CNNs capture local spectro-temporal patterns effectively
@@ -279,3 +222,4 @@ This project is released under the **MIT License**.
 ## 📬 Contact
 
 For questions, feedback, or collaboration ideas, please open an issue on GitHub.
+
